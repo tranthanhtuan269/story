@@ -21,18 +21,9 @@
 
         <div class="col-md-9">
             <div class="row">
-                @foreach($stories as $index => $store )
-                <div class="col-4 @if($index >= 3) mt-3 @endif ">
-                    <div class="card" style="width: 18rem;">
-                      <img class="card-img-top" src="{{ url('/') }}/svg/286x180.svg" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ $store->name }}</h5>
-                        <p class="card-text">{{ $store->author }}</p>
-                        <a href="{{ url('/') }}/unapproved/{{ $store->slug }}" class="btn btn-primary">Detail</a>
-                      </div>
-                    </div>
+                <div class="col-12">
+                    {!! $story->content !!}
                 </div>
-                @endforeach
             </div>
         </div>
     </div>

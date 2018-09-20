@@ -1,0 +1,13 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Chapter extends Model
+{
+    	public $timestamps = false;
+    	protected $fillable = [
+        		'slug', 'name', 'category_id'
+    	];
+}

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UnApproved;
+use DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $stories = DB::table('story_detail')->select('slug', 'name', 'author')->distinct()->paginate(15);
+        return view('home', ['stories' => $stories]);
+    }
+
+    public function slug(){
+        $stories = UnApproved::get();
+        foreach ($stories as $story) {
+            $story->slug = str_slug($story->name);
+            $story->save();
+        }
     }
 }
