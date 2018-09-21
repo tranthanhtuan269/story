@@ -9,6 +9,6 @@ class UnApproved extends Model
 	public $timestamps = false;
 	protected $table = 'story_detail';
     	protected $fillable = [
-        		'slug', 'name', 'author','content','link','chapter',
+        		'slug', 'avatar', 'name', 'author','content','link','chapter',
     	];
 }

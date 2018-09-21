@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="slug-unapproved-page">
     <div class="row justify-content-center">
         <div class="col-md-3">
             <ul class="list-group">
@@ -19,7 +19,7 @@
             </ul>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9" id="main-content">
             <div class="row">
                 @foreach($stories as $index => $store )
                 <div class="col-4 @if($index >= 3) mt-3 @endif ">
@@ -28,13 +28,17 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ $store->name . ' - ' . $store->chapter }}</h5>
                         <p class="card-text">{{ $store->author }}</p>
-                        <a href="{{ url('/') }}/unapproved/{{ $store->id }}/view" class="btn btn-primary">Detail</a>
+                        <a href="{{ url('/') }}/unapproved/{{ $store->id }}/edit" class="btn btn-primary">Chỉnh sửa</a>
+                        <a href="{{ url('/') }}/unapproved/{{ $store->id }}/view" class="btn btn-primary">Chi tiết</a>
                       </div>
                     </div>
                 </div>
                 @endforeach
             </div>
+            {{ $stories->links() }}
         </div>
+
+        <button onclick="goBack()" class="btn btn-default back-btn"><i class="fas fa-arrow-left"></i>  Trở về </button>
     </div>
 </div>
 @endsection

@@ -1,0 +1,76 @@
+html body{
+	font-size: 16px;
+}
+
+.pagination{
+	justify-content: center;
+	margin-top: 20px;
+}
+
+#home-page .card-story .card-title{
+	min-height: 42px;
+}
+
+#home-page .home-page{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#home-page #main-content{
+	margin-bottom: 40px;
+}
+
+#home-page .back-btn{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#slug-unapproved-page #main-content{
+	margin-bottom: 40px;
+}
+
+#slug-unapproved-page .back-btn{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#story-detail .story-title{
+	font-size: 22px;
+	margin: 0px 0px 10px ;
+}
+
+#story-detail .story-content{
+	font-size: 16px;
+	margin-bottom: 40px;
+}
+
+#story-detail .back-btn{
+	position: fixed;
+	bottom: 20px;
+	right: 110px;
+}
+
+#story-detail .save-content{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#story-edit .avatar{
+        margin-bottom: 6px;
+}
+
+#story-edit .back-btn{
+	position: fixed;
+	bottom: 20px;
+	right: 120px;
+}
+
+#story-edit .save-content{
+	position: fixed;
+	bottom: 20px;
+	right: 15px;
+}
