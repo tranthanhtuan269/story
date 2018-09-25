@@ -8,6 +8,6 @@ class Chapter extends Model
 {
     	public $timestamps = false;
     	protected $fillable = [
-        		'slug', 'name', 'category_id'
+        		'slug', 'name', 'content', 'story_id', 'views', 'likes', 
     	];
 }

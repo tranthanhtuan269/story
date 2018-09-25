@@ -15,7 +15,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
@@ -75,7 +75,21 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                            <li class="list-group-item active"><i class="far fa-list-alt"></i>  Danh mục</li>
+                            <li class="list-group-item"><a href="{{ url('/') }}/home">Chưa duyệt</a></li>
+                            @foreach($categoriesMenu as $menu)
+                            <li class="list-group-item"><a href="{{ url('/') }}/categories/{{ $menu->slug }}">{{ $menu->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
     <script src="{{ asset('js/script.js') }}"></script>

@@ -3,78 +3,63 @@
 @section('content')
 <script src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
 <script src="https://unpkg.com/sweetalert2@7.12.16/dist/sweetalert2.all.js"></script>
-
-<div class="container-fluid" id="story-edit">
-    <div class="row justify-content-center">
-        <div class="col-md-3">
-            <ul class="list-group">
-                <li class="list-group-item active"><i class="far fa-list-alt"></i>  Danh mục</li>
-                <li class="list-group-item">Chưa duyệt</li>
-                <li class="list-group-item">Ngôn tình</li>
-                <li class="list-group-item">Truyện teen</li>
-                <li class="list-group-item">Kiếm hiệp</li>
-                <li class="list-group-item">Tiên hiệp</li>
-                <li class="list-group-item">Xuyên không</li>
-                <li class="list-group-item">Đam mỹ</li>
-                <li class="list-group-item">Sắc hiệp</li>
-                <li class="list-group-item">Trinh thám</li>
-                <li class="list-group-item">Truyện kinh dị</li>
-            </ul>
-        </div>
-
-        <div class="col-md-9">
-            <div class="row">
-                {!! Form::open(['method' => 'POST', 'route' => ['unapproved.update', $story->id], 'id' => 'edit-unapproved', 'class' => 'col-sm-12', 'files' => true]) !!}
-                    @method('PUT')
-                    <div class="form-group row">
-                        <div class="col-sm-10"> 
-                            <div class="avatar">
-                                <img id="image-loading" src="{{ asset('images/bx_loader.gif') }}" width="286" height="180" style="display: none;position: absolute;top: 35%;left: 45%;">
-                                <input type="hidden" id="avatar" name="avatar" value="{{ $story->avatar }}">
-                                @if(strlen($story->avatar) > 0)
-                                    <img src="{{ url('/') }}/images/stories/{{ $story->avatar }}" width="286" height="180" id="avatar-image" class="img">
-                                @else
-                                    <img src="{{ url('/') }}/svg/286x180.svg" id="avatar-image" width="286" height="180" class="img">
-                                @endif
-                            </div>
-                            <div class="btn btn-primary" id="change-avatar-btn">Đổi ảnh đại diện</div>
-                            <div class="text-danger"><b>Chú ý: </b>Kích thước ảnh nên trong khoảng 160x160 tới 3000x3000 pixels</div>
-                        </div>
+<div class="col-md-9 form-content" id="story-edit">
+    <div class="row">
+        {!! Form::open(['method' => 'POST', 'route' => ['unapproved.update', $story->id], 'id' => 'edit-unapproved', 'class' => 'col-sm-12', 'files' => true]) !!}
+            @method('PUT')
+            <div class="form-group row">
+                <div class="col-sm-10"> 
+                    <div class="avatar">
+                        <img id="image-loading" src="{{ asset('images/bx_loader.gif') }}" width="220" height="300" style="display: none;position: absolute;top: 35%;left: 45%;">
+                        <input type="hidden" id="avatar" name="avatar" value="{{ $story->avatar }}">
+                        @if(strlen($story->avatar) > 0)
+                            <img src="{{ url('/') }}/images/stories/{{ $story->avatar }}"  width="110" height="150" id="avatar-image" class="img">
+                        @else
+                            <img src="{{ url('/') }}/images/220_300.jpg" id="avatar-image"  width="110" height="150" class="img">
+                        @endif
                     </div>
-                    <div class="form-group row">
-                        {{ Form::label("name", null, ['class' => 'col-sm-2 col-form-label']) }}
-                        <div class="col-sm-10"> 
-                            {{ Form::text("name", $story->name, ['class' => 'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        {{ Form::label("author", null, ['class' => 'col-sm-2 col-form-label']) }}
-                        <div class="col-sm-10"> 
-                            {{ Form::text("author", $story->author, ['class' => 'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        {{ Form::label("link", null, ['class' => 'col-sm-2 col-form-label']) }}
-                        <div class="col-sm-10"> 
-                            {{ Form::text("link", $story->link, ['class' => 'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        {{ Form::label("chapter", null, ['class' => 'col-sm-2 col-form-label']) }}
-                        <div class="col-sm-10"> 
-                            {{ Form::text("chapter", $story->chapter, ['class' => 'form-control']) }}
-                        </div>
-                    </div>
-                {!! Form::close() !!}
+                    <div class="btn btn-primary" id="change-avatar-btn">Đổi ảnh đại diện</div>
+                    <div class="text-danger"><b>Chú ý: </b>Kích thước ảnh nên trong khoảng 160x160 tới 3000x3000 pixels</div>
+                </div>
             </div>
-            <div class="row">
-                <button type="submit" class="btn btn-primary save-content" onclick="saveStory({{ $story->id }})"><i class="fas fa-download"></i>  Lưu lại</button>
-                <button onclick="goBack()" class="btn btn-default back-btn"><i class="fas fa-arrow-left"></i>  Trở về </button>
+            <div class="form-group row">
+                {{ Form::label("Name:", null, ['class' => 'col-sm-2 col-form-label']) }}
+                <div class="col-sm-10"> 
+                    {{ Form::text("name", $story->name, ['class' => 'form-control']) }}
+                </div>
             </div>
-        </div>
+            <div class="form-group row">
+                {{ Form::label("Author:", null, ['class' => 'col-sm-2 col-form-label']) }}
+                <div class="col-sm-10"> 
+                    {{ Form::text("author", $story->author, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ Form::label("link:", null, ['class' => 'col-sm-2 col-form-label']) }}
+                <div class="col-sm-10"> 
+                    {{ Form::text("link", $story->link, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ Form::label("chapter:", null, ['class' => 'col-sm-2 col-form-label']) }}
+                <div class="col-sm-10"> 
+                    {{ Form::text("chapter", $story->chapter, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ Form::label("category:", null, ['class' => 'col-sm-2 col-form-label']) }}
+                <div class="col-sm-10"> 
+                    {{ Form::select('category', $categories, '1', ['class' => 'form-control'])}}
+                </div>
+            </div>
+        {!! Form::close() !!}
     </div>
+    <div class="row">
+        <button type="submit" class="btn btn-danger approve-content" onclick="approveStory({{ $story->id }})"><i class="fas fa-check"></i>  Duyệt</button>
+        <button type="submit" class="btn btn-primary save-content" onclick="saveStory({{ $story->id }})"><i class="fas fa-download"></i>  Lưu lại</button>
+        <button onclick="goBack()" class="btn btn-default back-btn"><i class="fas fa-arrow-left"></i>  Trở về </button>
+    </div>    
 </div>
-
 <!-- Modal -->
 <div id="change-avatar" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg modal-image">
@@ -123,8 +108,8 @@
             loadImage($file);
         });
         
-        var crop_max_width = 286;
-        var crop_max_height = 180;
+        var crop_max_width = 220;
+        var crop_max_height = 300;
         var jcrop_api;
         var canvas;
         var context;
@@ -212,7 +197,7 @@
             boxWidth: crop_max_width,
             boxHeight: crop_max_height,
             setSelect: [0,0,imageSize,imageSize],
-            aspectRatio: 1,
+            aspectRatio: crop_max_width/crop_max_height,
             bgOpacity:   .4,
             bgColor:     'black'
           }, function() {
@@ -295,6 +280,49 @@
 
     function saveStory($id){
         $('#edit-unapproved').submit();
+    }
+
+    function approveStory($id){
+        var data = {
+            id: $id,
+            name: $("input[name=name]").val(),
+            author: $("input[name=author]").val(),
+            avatar: $("input[name=avatar]").val(),
+            link: $("input[name=link]").val(),
+            chapter: $("input[name=chapter]").val(),
+            category: $('select[name=category]').find(":selected").val()
+        };
+
+        $.ajaxSetup(
+          {
+              headers:
+              {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+            url: "{{ url('/') }}/unapproved/"+$id+"/approve",
+            type: "POST",
+            data: data,
+            success: function(data) {
+                if(data.status_code == 201){
+                    swal({
+                        html: '<div class="alert-success">Duyệt truyện thành công!</div>',
+                      });
+                    window.location.href = "{{ url('/') }}/home";
+                    return;
+                }else{
+                    swal({
+                        html: '<div class="alert-danger">Có lỗi xảy ra trong quá trình xử lý</div>',
+                      })
+                    return;
+                }
+            },
+            error: function(data) {
+                alert("Error");
+            },
+            complete: function(data) {}
+          });
     }
 </script>
 @endsection

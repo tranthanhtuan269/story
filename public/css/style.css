@@ -7,8 +7,13 @@ html body{
 	margin-top: 20px;
 }
 
-#home-page .card-story .card-title{
+.card-title{
 	min-height: 42px;
+	font-size: 18px;
+	background-color: #fff;
+	padding: 8px;
+	border-radius: 4px;
+	margin-bottom: 5px;
 }
 
 #home-page .home-page{
@@ -21,7 +26,7 @@ html body{
 	margin-bottom: 40px;
 }
 
-#home-page .back-btn{
+.back-btn{
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
@@ -29,12 +34,6 @@ html body{
 
 #slug-unapproved-page #main-content{
 	margin-bottom: 40px;
-}
-
-#slug-unapproved-page .back-btn{
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
 }
 
 #story-detail .story-title{
@@ -47,30 +46,43 @@ html body{
 	margin-bottom: 40px;
 }
 
-#story-detail .back-btn{
+.approve-content{
 	position: fixed;
 	bottom: 20px;
-	right: 110px;
+	right: 222px;
 }
 
-#story-detail .save-content{
+.save-content{
 	position: fixed;
 	bottom: 20px;
-	right: 20px;
+	right: 120px;
+}
+
+.create-btn{
+	position: fixed;
+	bottom: 20px;
+	right: 120px;
 }
 
 #story-edit .avatar{
         margin-bottom: 6px;
 }
 
-#story-edit .back-btn{
-	position: fixed;
-	bottom: 20px;
-	right: 120px;
+.form-content{
+	margin-bottom: 35px;
 }
 
-#story-edit .save-content{
-	position: fixed;
-	bottom: 20px;
-	right: 15px;
+.card-img-top{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+.card-body{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	z-index: 12;
+	padding: 4px;
 }

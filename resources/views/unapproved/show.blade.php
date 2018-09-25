@@ -1,39 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid" id="story-detail">
-    <div class="row justify-content-center">
-        <div class="col-md-3">
-            <ul class="list-group">
-                <li class="list-group-item active"><i class="far fa-list-alt"></i>  Danh mục</li>
-                <li class="list-group-item">Chưa duyệt</li>
-                <li class="list-group-item">Ngôn tình</li>
-                <li class="list-group-item">Truyện teen</li>
-                <li class="list-group-item">Kiếm hiệp</li>
-                <li class="list-group-item">Tiên hiệp</li>
-                <li class="list-group-item">Xuyên không</li>
-                <li class="list-group-item">Đam mỹ</li>
-                <li class="list-group-item">Sắc hiệp</li>
-                <li class="list-group-item">Trinh thám</li>
-                <li class="list-group-item">Truyện kinh dị</li>
-            </ul>
+<div class="col-md-9" id="story-detail">
+    <div class="row">
+        <div class="col-12 story-title">
+            {!! $story->name !!} - {!! $story->chapter !!}
+            <hr />
         </div>
-
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-12 story-title">
-                    {!! $story->name !!} - {!! $story->chapter !!}
-                    <hr />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 story-content" contenteditable="true">
-                    {!! $story->content !!}
-                </div>
-                <button type="submit" class="btn btn-primary save-content" onclick="saveStory({{ $story->id }})"><i class="fas fa-download"></i>  Lưu lại</button>
-                <button onclick="goBack()" class="btn btn-default back-btn"><i class="fas fa-arrow-left"></i>  Trở về </button>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-12 story-content" contenteditable="true">
+            {!! $story->content !!}
         </div>
+        <button type="submit" class="btn btn-primary save-content" onclick="saveStory({{ $story->id }})"><i class="fas fa-download"></i>  Lưu lại</button>
+        <button onclick="goBack()" class="btn btn-default back-btn"><i class="fas fa-arrow-left"></i>  Trở về </button>
     </div>
 </div>
 

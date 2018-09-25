@@ -12,9 +12,9 @@
               <img class="card-img-top" src="{{ url('/') }}/images/stories/{{ $story->avatar }}"  width="110" height="150" alt="Card image cap">
               @endif
               <div class="card-body">
-                <h5 class="card-title text-center">{{ $story->name }} <br /> <span style="color:red;">{{ $story->author }}</span></h5>
-                {!! Form::open(['method' => 'Delete', 'route' => ['unapproved.destroy', $story->slug], 'class' => 'text-center']) !!}
-                <a href="{{ url('/') }}/unapproved/{{ $story->slug }}" class="btn btn-primary">Chi tiết</a>
+                <h5 class="card-title">{{ $story->name }} <br /> <span style="color:red;">{{ $story->author }}</span></h5>
+                {!! Form::open(['method' => 'Delete', 'route' => ['stories.destroy', $story->slug]]) !!}
+                <a href="{{ url('/') }}/stories/{{ $story->slug }}" class="btn btn-primary">Chi tiết</a>
                 <button type="submit" class="btn btn-danger">Xóa</button>
                 {!! Form::close() !!}
               </div>
